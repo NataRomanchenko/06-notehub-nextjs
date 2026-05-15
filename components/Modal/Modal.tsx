@@ -30,12 +30,18 @@ export default function Modal({ children, onClose }: ModalProps) {
   }, [onClose]);
 if (!modalRoot) return null;
   return createPortal(
-    <div className={css.backdrop
-    } onClick={onClose}>
-      <div className={css.modal} onClick={(e) => e.stopPropagation()}>
-        {children}
-      </div>
-    </div>,
-    modalRoot
-  );
+  <div
+    className={css.overlay}
+    onClick={(e) => {
+      if (e.target === e.currentTarget) {
+        onClose();
+      }
+    }}
+  >
+    <div className={css.modal}>
+      {children}
+    </div>
+  </div>,
+  modalRoot
+);
 }

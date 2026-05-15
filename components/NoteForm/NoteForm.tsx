@@ -69,6 +69,8 @@ export default function NoteForm({ onClose }: NoteFormProps) {
             <option value="Meeting">Meeting</option>
             <option value="Shopping">Shopping</option>
           </Field>
+         <ErrorMessage name="tag" component="div" />
+
         </div>
 
         <div className={css.actions}>
